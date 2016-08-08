@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<script src="C:\Users\Nilesh\Downloads\angular.min.js"></script>
+	<style>
+			table, td {
+				border: 1px solid grey;
+				padding: 5px;
+				border-collapse:collapse;
+				}
+	</style>
+<body >
+   <div ng-app="myApp" ng-controller="myCtrl">
+	<form>
+	
+		`Name : <input type="text" ng-model="data.name" /> <br>
+		Address : <input type="text" ng-model="data.address" /> <br>
+		City: <input type="text" ng-model="data.city" /> <br>
+		Country :<input type="text" ng-model="data.country" /> <br>
+		Mobile Number :<input type="number" ng-model="data.mobile" /> <br>
+		<br>
+		<button ng-click="submit(data)" >submit</button>
+		<button ng-click="edit(x)"> Edit </button>
+		<button ng-click="reset()">Reset </button>
+		
+		
+	
+	</form>
+	<table>
+		<tr ng-repeat="x in names">
+		<td><button ng-click="delete(index)">delete</button></td>
+			<td> {{ x.name }}</td>
+			<td> {{ x.address }} </td>
+			<td> {{ x.city }} </td>
+			<td>  {{ x.country }} </td>
+			<td>  {{ x.mobile }} </td>
+			
+		</tr>
+		
+	
+	</table>
+   </div>
+   <script>
+		var app=angular.module("myApp", []);
+		app.controller('myCtrl',function($scope){
+				$scope.names=[{"name":"nilesh deshmukh","address":"pune","city":"nagar","country":"india",
+				"mobile":9403537336}, {"name":"bharat deshmukh","address":"pimpri","city":"pune","country":"japan",
+				"mobile":940353739 }];
+					
+				$scope.submit=function(data){
+					$scope.names.push(angular.copy(data));
+					}
+				$scope.edit=function(input){
+					$scope.data=input;
+					}
+			$scope.delete=function(index){
+				$scope.names.splice (index, 1);
+				}
+				$scope.reset=function(){
+					$scope.data={};	
+					}
+			});
+   </script>
+</body>
+</html>`
